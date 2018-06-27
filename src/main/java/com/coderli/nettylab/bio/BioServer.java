@@ -24,7 +24,7 @@ public class BioServer {
             String line = reader.readLine();
             System.out.println(line);
             socket.getOutputStream().write("Hello, I'm server.".getBytes());
-            socket.close();
+            socket.shutdownOutput();
         }
     }
 

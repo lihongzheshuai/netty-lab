@@ -16,6 +16,7 @@ public class BioClient {
         OutputStream os = socket.getOutputStream();
         InputStream is = socket.getInputStream();
         os.write("Hello, I'm client.".getBytes());
+        socket.shutdownOutput();
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         System.out.println(br.readLine());
         socket.close();
