@@ -32,6 +32,7 @@ public class NioServer {
                         SocketChannel socketChannel = server.accept();
                         socketChannel.configureBlocking(false);
                         socketChannel.write(ByteBuffer.wrap(new String("Server: op_accept").getBytes()));
+                        socketChannel.shutdownOutput();
                     }
                 }
             }
