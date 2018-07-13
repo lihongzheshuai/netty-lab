@@ -28,8 +28,8 @@ public class NioServer {
                     SelectionKey selectionKey = keysItor.next();
                     keysItor.remove();
                     if (selectionKey.isAcceptable()) {
-                        ServerSocketChannel server = (ServerSocketChannel) selectionKey.channel();
-                        SocketChannel socketChannel = server.accept();
+                        ServerSocketChannel ssChannel = (ServerSocketChannel) selectionKey.channel();
+                        SocketChannel socketChannel = ssChannel.accept();
                         socketChannel.configureBlocking(false);
                         socketChannel.write(ByteBuffer.wrap(new String("Server: op_accept").getBytes()));
                         socketChannel.shutdownOutput();

@@ -19,7 +19,10 @@ public class NioClient {
             socketChannel.configureBlocking(false);
             socketChannel.connect(new InetSocketAddress("127.0.0.1", 7090));
             Selector selector = Selector.open();
+            socketChannel.register(selector, SelectionKey.OP_CONNECT);
             socketChannel.register(selector, SelectionKey.OP_READ);
+            socketChannel.register(selector, SelectionKey.OP_CONNECT);
+            socketChannel.register(selector, SelectionKey.OP_WRITE);
             for (; ; ) {
                 selector.select();
                 Iterator<SelectionKey> keyIterator = selector.selectedKeys().iterator();
