@@ -33,6 +33,7 @@ public class NioServer {
                         socketChannel.configureBlocking(false);
                         socketChannel.write(ByteBuffer.wrap(new String("Server: op_accept").getBytes()));
                         socketChannel.shutdownOutput();
+                        System.out.println("Write...");
                     }
                 }
             }
