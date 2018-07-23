@@ -31,9 +31,10 @@ public class NioServer {
                         ServerSocketChannel ssChannel = (ServerSocketChannel) selectionKey.channel();
                         SocketChannel socketChannel = ssChannel.accept();
                         socketChannel.configureBlocking(false);
+                        ByteBuffer buffer = ByteBuffer.allocate(17);
+                        socketChannel.read(buffer);
+                        System.out.println("Receive msg from client:" + new String(buffer.array()));
                         socketChannel.write(ByteBuffer.wrap(new String("Server: op_accept").getBytes()));
-                        socketChannel.shutdownOutput();
-                        System.out.println("Write...");
                     }
                 }
             }
