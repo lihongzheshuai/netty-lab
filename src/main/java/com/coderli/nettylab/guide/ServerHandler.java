@@ -7,7 +7,7 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 /**
  * @author lihongzhe 2018/7/24 23:58
  */
-public class DiscardServerHandler extends ChannelInboundHandlerAdapter { // (1)
+public class ServerHandler extends ChannelInboundHandlerAdapter { // (1)
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) { // (2)
