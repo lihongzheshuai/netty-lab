@@ -7,10 +7,11 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 /**
  * @author lihongzhe 2018/7/24 23:58
  */
-public class ServerHandler extends ChannelInboundHandlerAdapter { // (1)
+public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) { // (2)
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
+        System.out.println("Receive Msg.");
         // Discard the received data silently.
         ((ByteBuf) msg).release(); // (3)
     }

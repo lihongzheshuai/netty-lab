@@ -13,7 +13,14 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
     private ByteBuf buf;
 
     @Override
+    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("Channel Registered, Client.");
+        ctx.fireChannelRegistered();
+    }
+
+    @Override
     public void handlerAdded(ChannelHandlerContext ctx) {
+        System.out.println("Handler added.");
         buf = ctx.alloc().buffer(4); // (1)
     }
 
