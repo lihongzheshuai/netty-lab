@@ -13,11 +13,11 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         System.out.println("Receive Msg.");
         // Discard the received data silently.
-        ((ByteBuf) msg).release(); // (3)
+        ((ByteBuf) msg).release();
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) { // (4)
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         // Close the connection when an exception is raised.
         cause.printStackTrace();
         ctx.close();

@@ -29,7 +29,7 @@ public class NettyNioClient {
                 }
             });
 
-            ChannelFuture f = b.connect("127.0.0.1", 7060).sync(); // (5)
+            ChannelFuture f = b.connect("127.0.0.1", 7060).sync();
 
             // Wait until the connection is closed.
             f.channel().closeFuture().sync();

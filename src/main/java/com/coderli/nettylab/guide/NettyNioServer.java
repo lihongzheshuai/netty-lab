@@ -27,11 +27,11 @@ public class NettyNioServer {
                             ch.pipeline().addLast(new ServerHandler());
                         }
                     })
-                    .option(ChannelOption.SO_BACKLOG, 128)          // (5)
-                    .childOption(ChannelOption.SO_KEEPALIVE, true); // (6)
+                    .option(ChannelOption.SO_BACKLOG, 128)
+                    .childOption(ChannelOption.SO_KEEPALIVE, true);
 
             // Bind and start to accept incoming connections.
-            ChannelFuture f = b.bind(7060).sync(); // (7)
+            ChannelFuture f = b.bind(7060).sync(); // (4)
 
             // Wait until the server socket is closed.
             // In this example, this does not happen, but you can do that to gracefully
