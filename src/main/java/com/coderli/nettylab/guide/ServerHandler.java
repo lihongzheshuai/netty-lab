@@ -62,7 +62,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     /**
      * Calls {@link ChannelHandlerContext#fireChannelRead(Object)} to forward
-     * to the next {@link ChannelInboundHandler} in the {@link ChannelPipeline}.
+     * to the next {@link ChannelInboundHandler} i  n the {@link ChannelPipeline}.
      * <p>
      * Sub-classes may override this method to change behavior.
      */
