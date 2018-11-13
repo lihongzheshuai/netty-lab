@@ -81,7 +81,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
      */
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("Channel Complete.");
+        System.out.println("Channel Read Complete.");
         System.out.println(ctx.name());
         ctx.fireChannelReadComplete();
     }

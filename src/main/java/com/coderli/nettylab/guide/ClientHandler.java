@@ -16,6 +16,8 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
         System.out.println("Channel Registered, Client.");
         ctx.fireChannelRegistered();
+        ctx.channel().write("On Client Channel Regist");
+        ctx.channel().flush();
     }
 
     @Override
