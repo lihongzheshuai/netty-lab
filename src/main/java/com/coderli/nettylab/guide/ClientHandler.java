@@ -16,8 +16,6 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
     public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
         System.out.println("Channel Registered, Client.");
         ctx.fireChannelRegistered();
-        ctx.channel().write("On Client Channel Regist");
-        ctx.channel().flush();
     }
 
     @Override
@@ -43,6 +41,15 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
             System.out.println(new Date(currentTimeMillis));
             ctx.close();
         }
+    }
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("Channel Active.");
+        System.out.println(ctx.name());
+        ctx.channel().write("On Client Channel Active");
+        ctx.channel().flush();
+        ctx.fireChannelActive();
     }
 
     @Override
