@@ -3,6 +3,8 @@ package com.coderli.nettylab.guide;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.*;
 
+import java.nio.ByteBuffer;
+
 /**
  * @author lihongzhe 2018/7/24 23:58
  */
@@ -43,7 +45,6 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("Channel Active.");
-        System.out.println(ctx.name());
         ctx.fireChannelActive();
     }
 
@@ -69,7 +70,9 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         System.out.println("Channel Read.");
-        System.out.println(ctx.name());
+        byte[] bytes = new byte[17];
+        ((ByteBuf) msg).readBytes(bytes);
+        System.out.println("Msg is: " + new String(bytes));
         ctx.fireChannelRead(msg);
     }
 

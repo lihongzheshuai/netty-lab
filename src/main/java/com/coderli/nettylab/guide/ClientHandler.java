@@ -1,6 +1,8 @@
 package com.coderli.nettylab.guide;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
+import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
@@ -47,8 +49,7 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("Channel Active.");
         System.out.println(ctx.name());
-        ctx.channel().write("On Client Channel Active");
-        ctx.channel().flush();
+        ctx.channel().writeAndFlush(PooledByteBufAllocator.DEFAULT.buffer().writeBytes("Hello I'm Client.".getBytes()));
         ctx.fireChannelActive();
     }
 
